@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% load humanize %}
+<div id="content" class="site-content">
+            
+            <div id="blog-wrapper">
+                <div class="blog-holder center-relative">
+                    <h2 class="entry-title">
+                    <a href="{% url 'home' %}">Nike Keenam</a>
+                </h2>
+                
+
+                    {% for post in food %}
+                    <article id="post-1" class="blog-item-holder featured-post">
+                        <div class="entry-content relative">
+                            <div class="content-1170 center-relative">
+                                <div class="cat-links">
+                                    <ul>
+                                        <li>
+                                            <a href="{% url 'home' %}">{{post.category.name}}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="entry-date published">{{post.published|naturaltime }}</div>
+                                <h2 class="entry-title">
+                                    <a href="{% url 'single' post.id %}">{{post.title}}</a>
+                                </h2>
+                                <div class="excerpt">
+                                    {{post.body|truncatewords:20}}<a class="read-more" href="{% url 'single' post.id  %}"></a>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </article>
+                    {% endfor %}
+                </div>
+                    <div class="clear"></div>
+                    <!--Paginator-->
+
+                 {% include "paginator.html" %}
+                
+            </div>
+            <div class="featured-image-holder">
+                <div class="featured-post-image" style="background-image: url( {% static "demo-images/author1.jpg" %})">
+                    
+                </div>
+
+            </div>
+
+            <div class="clear"></div>
+        </div>
+
+                    {% endblock content %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="blog-holder center-relative">
+<article id="post-2" class="blog-item-holder">
+	<div class="entry-content relative">
+		<div class="content-1170 center-relative">
+
+			<h2 class="entry-title">
+				Search Result{%if post %}s{% endif %}
+			</h2>
+			<p>
+				
+			</p>
+			{% if post %}
+			{% for post in post%}
+				<div class="cat-links">
+                    <ul>
+                    	<li>
+                    		<a href="{% url 'single' post.id  %}">{{post.title}}</a>
+                    	</li>
+                       
+
+ {% endfor %}
+	{% else %}
+	<li>Sorry! your search for  "{{query}}"  didn't match any results</li>
+	{% endif %}
+              </ul>
+            </div>
+        </div>
+    </div>
+</article>
+{% endblock %}

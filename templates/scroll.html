@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% load humanize %}
+
+        <!-- Scroll Content -->
+        <div id="content" class="site-content">
+            
+            <div class="full-screen-scroll">
+                <ul id="cbp-bislideshow" class="cbp-bislideshow scroll">
+                    {% if post.image %}
+                    <li style="background-image: url('{{post.image.url}}');">
+                        {% endif %}
+                        <article class="entry-holder">
+                            <h2 class="entry-title">
+                                <a>{{post.title}}</a>
+                            </h2>
+                            <div class="info-holder">
+                                <div class="cat-links">
+                                    <ul>
+                                        <li>
+                                            <a>{{post.category.name}}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="entry-date published">{{post.published|naturaltime}}</div>
+                            </div>
+                            <div class="excerpt">{{post.body}}</div>
+                            <div class="clear"></div>
+                        </article>
+                    </li>
+
+                    {% if post.image %}
+                    <li style="background-image: url('{{post.image.url}}');">
+                        {% endif %}
+                        <article class="entry-holder">
+                            
+                            <div class="info-holder">
+                                <div class="cat-links">
+                                    <ul>
+                                        <li>
+                                            <a>Quote</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="entry-date published">{{post.published|naturaltime}}</div>
+                            </div>
+                            <div class="excerpt">{{post.quote}}</div>
+                            <div class="clear"></div>
+                        </article>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="clear"></div>
+        </div>
+
+{% endblock content %}

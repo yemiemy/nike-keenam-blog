@@ -1,0 +1,36 @@
+
+<div class="block load-more-holder" >
+  <div class="pagination">
+
+                  
+                    {% if post.has_previous %}
+                    <a class="pagination-number" class="pagination-action"  href="?page=1">First</a>
+                    <a class="pagination-number" class="pagination-action"  href="?page={{ post.previous_page_number }}">Previous</a>
+                    {% endif %}
+
+                {% for num in post.paginator.page_range %}
+                      {% if post.number == num %}
+                      <strong><span class="pagination-number pagination-current"><b>{{ num }}</b></span></strong>
+                    
+                {% elif num > post.number|add:'-3' and num < post.number|add:'3' %}
+
+                      <a class="pagination-number" href="?page={{ num }}">
+                        {{ num }}
+                      </a>
+                {% endif %}
+                {% endfor %}
+                    
+                    {% if post.has_next %}
+                    <a class="pagination-number" class="pagination-action"  href="?page={{ post.next_page_number }}">Next</a>
+                    <a class="pagination-number" class="pagination-action"  href="?page= {{ post.paginator.num_pages}}">Last</a>
+                    {% endif %}
+                  
+                </div>
+                {% if post.has_next %}  
+                    <a href="?page={{ post.next_page_number }}">
+                      LOAD MORE ENTRIES
+                    </a>
+                    {% endif %}
+                
+              </div>
+   
